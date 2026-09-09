@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERKASA.EDU - Tropical Study & Career Center UPA Perkasa UNMUL</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-main: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.15);
+            
+            --primary: #059669;
+            --light-primary: #10B981; 
+            --accent: #D97706;
+            --card-glow: rgba(5, 150, 105, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0B0F19;
+            --bg-card: rgba(19, 28, 46, 0.75);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --card-hover-shadow: 0 12px 40px 0 rgba(16, 185, 129, 0.2);
+            
+            --primary: #10B981;
+            --light-primary: #34D399;
+            --accent: #FBBF24;
+            --card-glow: rgba(16, 185, 129, 0.15);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .hero-space-bg {
+            background-image: linear-gradient(to bottom, var(--bg-main), transparent), url('background2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .creative-card {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .creative-card:hover {
+            border-color: var(--light-primary);
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-6px);
+        }
+
+        .text-dynamic-gradient {
+            background: linear-gradient(135deg, var(--light-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-primary-theme { color: var(--primary); }
+        .text-light-primary-theme { color: var(--light-primary); }
+        .text-accent-theme { color: var(--accent); }
+        .bg-primary-theme { background-color: var(--primary); }
+        .bg-accent-theme { background-color: var(--accent); }
+        .border-primary-theme { border-color: var(--primary); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+            color: var(--light-primary);
+            font-weight: 300;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-[var(--primary)] selection:text-white">
+
+    <!-- NAVBAR RESPONSIF -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[var(--bg-main)]/80 backdrop-blur-xl border-b border-[var(--border-color)] px-4 md:px-6 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="text-xl font-extrabold tracking-tight flex items-center gap-2">
+                <span class="bg-gradient-to-tr from-[var(--primary)] to-[var(--light-primary)] w-8 h-8 rounded-xl flex items-center justify-center text-white text-sm font-black shadow-lg">P</span>
+                PERKASA<span class="text-primary-theme">.EDU</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold" style="color: var(--text-muted);">
+                <a href="#loker" class="hover:text-[var(--light-primary)] transition">Loker</a>
+                <a href="#berita" class="hover:text-[var(--light-primary)] transition">Berita</a>
+                <a href="#agenda" class="hover:text-[var(--light-primary)] transition">Agenda</a>
+                <a href="#pengumuman" class="hover:text-[var(--light-primary)] transition">Pengumuman</a>
+                <a href="#about" class="hover:text-[var(--light-primary)] transition">Tentang Kami</a>
+            </nav>
+
+            <div class="flex items-center gap-2 md:gap-3">
+                <button onclick="toggleThemeMode()" id="themeToggleBtn" class="creative-card px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-2 hover:scale-105 transition">
+                    <span id="themeIcon">🌙</span> <span id="themeText" class="hidden sm:inline">Dark Mode</span>
+                </button>
+
+                <button class="hidden sm:block bg-[var(--text-main)] text-[var(--bg-main)] font-bold px-5 py-2.5 rounded-full hover:bg-[var(--primary)] hover:text-white transition duration-300 text-sm shadow-lg">
+                    Portal Alumni
+                </button>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden creative-card p-2.5 rounded-xl text-xs font-bold flex items-center justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-[var(--bg-card)] border-b border-[var(--border-color)] px-6 py-5 space-y-4 shadow-2xl backdrop-blur-2xl">
+            <a href="#loker" onclick="toggleMobileMenu()" class="block text-sm font-semibold" style="color: var(--text-muted);">Loker</a>
+            <a href="#berita" onclick="toggleMobileMenu()" class="block text-sm font-semibold" style="color: var(--text-muted);">Berita</a>
+            <a href="#agenda" onclick="toggleMobileMenu()" class="block text-sm font-semibold" style="color: var(--text-muted);">Agenda</a>
+            <a href="#pengumuman" onclick="toggleMobileMenu()" class="block text-sm font-semibold" style="color: var(--text-muted);">Pengumuman</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-sm font-semibold" style="color: var(--text-muted);">Tentang Kami</a>
+            <div class="pt-2">
+                <button class="w-full bg-[var(--text-main)] text-[var(--bg-main)] font-bold py-3 rounded-xl text-sm text-center shadow">
+                    Portal Alumni
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TEKS BERJALAN (MARQUEE) -->
+    <div class="relative top-16 z-40 bg-[var(--bg-card)] backdrop-blur-md border-y border-[var(--border-color)] py-2.5 overflow-hidden shadow-inner">
+        <div class="animate-marquee whitespace-nowrap text-xs font-semibold flex items-center gap-12" style="color: var(--text-muted);">
+            <div class="flex items-center gap-2">
+                <span class="bg-accent-theme text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">INFO</span>
+                Pendaftaran Tenant Inkubator Bisnis UPA Perkasa Telah Dibuka!
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="bg-primary-theme text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">LOKER</span>
+                Lowongan Kerja IT Support Specialist di PT Bank Pembangunan Daerah telah rilis.
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="bg-[var(--light-primary)] text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">AGENDA</span>
+                Workshop Personal Branding LinkedIn - 15 Oktober 2026.
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-48 pb-20 px-6 hero-space-bg overflow-hidden" id="hero-parallax">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/30 text-[var(--light-primary)] text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-sm">
+                    ✨ Pusat Karir & Informasi Kampus
+                </div>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+                    Kembangkan Potensi <br>
+                    <span class="text-dynamic-gradient typing-cursor" id="typingText"></span> <br>
+                    Di Ekosistem Tropis
+                </h1>
+
+                <p class="text-lg max-w-xl leading-relaxed" style="color: var(--text-muted);">
+                    Platform resmi UPA Perkasa Universitas Mulawarman untuk informasi lowongan kerja, agenda karir, pelatihan wirausaha, dan tracer study.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#loker" class="bg-primary-theme text-white font-bold px-8 py-4 rounded-2xl hover:opacity-90 transition duration-300 shadow-xl flex items-center gap-2">
+                        Jelajahi Loker &rarr;
+                    </a>
+                    <button onclick="openVideoModal()" class="creative-card font-bold px-8 py-4 rounded-2xl transition duration-300 flex items-center gap-2 group">
+                        <span class="w-8 h-8 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--light-primary)] group-hover:scale-110 transition">▶</span> 
+                        Tonton Video Profil
+                    </button>
+                </div>
+            </div>
+
+            <!-- MASKOT OPAN -->
+            <div class="lg:col-span-5 relative flex justify-center items-center reveal" id="opan-container">
+                <div class="absolute w-72 h-72 rounded-full blur-3xl -z-10 animate-pulse" style="background-color: var(--card-glow);"></div>
+                
+                <video class="w-full max-w-sm md:max-w-md object-contain z-10 animate-float" autoplay muted loop playsinline style="mix-blend-mode: screen; filter: drop-shadow(0 20px 30px var(--card-glow));">
+                    <source src="opan.webm" type="video/webm">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+                
+                <div class="absolute bottom-4 right-0 md:-right-2 creative-card p-5 rounded-2xl shadow-2xl z-20 min-w-[160px] animate-bounce duration-1000">
+                    <div class="text-xs font-medium" style="color: var(--text-muted);">Tingkat Penempatan</div>
+                    <div class="text-3xl font-extrabold mt-1 text-[var(--light-primary)] flex items-center gap-1">
+                        94% <span class="text-xs text-primary-theme font-normal">📈</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 2. QUICK STATS BAR -->
+    <section class="py-8 px-6 max-w-7xl mx-auto reveal">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="creative-card p-6 rounded-3xl text-center group">
+                <div class="text-3xl font-extrabold text-[var(--light-primary)] group-hover:scale-105 transition">150+</div>
+                <div class="text-xs mt-1 font-medium" style="color: var(--text-muted);">Mitra Perusahaan</div>
+            </div>
+            <div class="creative-card p-6 rounded-3xl text-center group">
+                <div class="text-3xl font-extrabold text-accent-theme group-hover:scale-105 transition">50+</div>
+                <div class="text-xs mt-1 font-medium" style="color: var(--text-muted);">Kegiatan & Workshop</div>
+            </div>
+            <div class="creative-card p-6 rounded-3xl text-center group">
+                <div class="text-3xl font-extrabold text-[var(--light-primary)] group-hover:scale-105 transition">1.000+</div>
+                <div class="text-xs mt-1 font-medium" style="color: var(--text-muted);">Alumni Terhubung</div>
+            </div>
+            <div class="creative-card p-6 rounded-3xl text-center group">
+                <div class="text-3xl font-extrabold text-accent-theme group-hover:scale-105 transition">100%</div>
+                <div class="text-xs mt-1 font-medium" style="color: var(--text-muted);">Layanan Gratis</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. LOWONGAN KERJA (LOKER) -->
+    <section id="loker" class="py-16 px-6 max-w-7xl mx-auto reveal">
+        <div class="flex justify-between items-end mb-10">
+            <div>
+                <span class="text-[var(--light-primary)] text-xs font-bold uppercase tracking-wider">Peluang Karir Utama</span>
+                <h2 class="text-3xl font-extrabold mt-1">Lowongan Kerja Terkini</h2>
+            </div>
+            <a href="#" class="text-sm font-bold text-[var(--light-primary)] hover:underline hidden md:flex items-center gap-1">Lihat Semua Loker &rarr;</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="creative-card p-7 rounded-3xl cursor-pointer flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[var(--primary)]/10 border border-[var(--primary)]/30 flex items-center justify-center font-bold text-[var(--light-primary)] text-xl">B</div>
+                        <span class="bg-[var(--primary)]/10 text-[var(--light-primary)] text-xs font-bold px-3 py-1 rounded-full border border-[var(--primary)]/20">Full-time</span>
+                    </div>
+                    <h3 class="text-xl font-bold hover:text-[var(--light-primary)] transition">IT Support Specialist</h3>
+                    <p class="text-sm mt-1" style="color: var(--text-muted);">PT Bank Pembangunan Daerah</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex justify-between items-center text-xs" style="color: var(--text-muted);">
+                    <span>📍 Samarinda</span>
+                    <span class="text-accent-theme font-semibold bg-accent-theme/10 px-2.5 py-1 rounded-lg">Batas: 15 Sep 2026</span>
+                </div>
+            </div>
+
+            <div class="creative-card p-7 rounded-3xl cursor-pointer flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-accent-theme/10 border border-accent-theme/30 flex items-center justify-center font-bold text-accent-theme text-xl">M</div>
+                        <span class="bg-accent-theme/10 text-accent-theme text-xs font-bold px-3 py-1 rounded-full border border-accent-theme/20">Internship</span>
+                    </div>
+                    <h3 class="text-xl font-bold hover:text-accent-theme transition">Digital Marketing</h3>
+                    <p class="text-sm mt-1" style="color: var(--text-muted);">Media Kreatif Nusantara</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex justify-between items-center text-xs" style="color: var(--text-muted);">
+                    <span>📍 Balikpapan</span>
+                    <span class="text-accent-theme font-semibold bg-accent-theme/10 px-2.5 py-1 rounded-lg">Batas: 20 Sep 2026</span>
+                </div>
+            </div>
+
+            <div class="creative-card p-7 rounded-3xl cursor-pointer flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[var(--primary)]/10 border border-[var(--primary)]/30 flex items-center justify-center font-bold text-[var(--light-primary)] text-xl">A</div>
+                        <span class="bg-[var(--primary)]/10 text-[var(--light-primary)] text-xs font-bold px-3 py-1 rounded-full border border-[var(--primary)]/20">Full-time</span>
+                    </div>
+                    <h3 class="text-xl font-bold hover:text-[var(--light-primary)] transition">Data Analyst</h3>
+                    <p class="text-sm mt-1" style="color: var(--text-muted);">Agro Indah Lestari</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-[var(--border-color)] flex justify-between items-center text-xs" style="color: var(--text-muted);">
+                    <span>📍 Kutai Kartanegara</span>
+                    <span class="text-accent-theme font-semibold bg-accent-theme/10 px-2.5 py-1 rounded-lg">Batas: 25 Sep 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BERITA, AGENDA & PENGUMUMAN -->
+    <section id="berita" class="py-16 px-6 max-w-7xl mx-auto reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-6">
+                <div>
+                    <span class="text-[var(--light-primary)] text-xs font-bold uppercase tracking-wider">Update Terbaru</span>
+                    <h2 class="text-3xl font-extrabold mt-1">Berita & Edukasi Karir</h2>
+                </div>
+
+                <div class="creative-card rounded-3xl overflow-hidden cursor-pointer group">
+                    <div class="h-64 w-full overflow-hidden bg-gray-800 relative">
+                        <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?q=80&w=1000&auto=format&fit=crop" alt="Berita" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                        <span class="absolute top-4 left-4 bg-accent-theme text-white text-xs font-extrabold px-3.5 py-1.5 rounded-full shadow-lg">Kegiatan Kampus</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="text-[var(--light-primary)] text-xs font-semibold flex items-center gap-2">📅 12 September 2026</div>
+                        <h3 class="text-2xl font-bold group-hover:text-[var(--light-primary)] transition">Penyelenggaraan UNMUL Career Talkshow & Job Fair 2026</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">
+                            Membuka peluang emas bagi lulusan dan mahasiswa untuk berinteraksi langsung dengan HRD berbagai perusahaan terkemuka...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div id="pengumuman">
+                    <h3 class="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">📢 Pengumuman</h3>
+                    <div class="creative-card p-6 rounded-3xl space-y-5">
+                        <div class="border-b border-[var(--border-color)] pb-4 cursor-pointer group">
+                            <span class="text-[10px] text-accent-theme font-bold uppercase bg-accent-theme/10 px-2 py-0.5 rounded">Penting</span>
+                            <h4 class="text-sm font-bold mt-1.5 group-hover:text-accent-theme transition">Pembukaan Pendaftaran Perkasa Business School</h4>
+                            <p class="text-xs mt-1" style="color: var(--text-muted);">Program inkubasi bisnis bagi wirausaha muda Universitas Mulawarman.</p>
+                        </div>
+                        <div class="cursor-pointer group">
+                            <span class="text-[10px] text-[var(--light-primary)] font-bold uppercase bg-[var(--primary)]/10 px-2 py-0.5 rounded">Tracer Study</span>
+                            <h4 class="text-sm font-bold mt-1.5 group-hover:text-[var(--light-primary)] transition">Pengisian Survey Tracer Study Lulusan</h4>
+                            <p class="text-xs mt-1" style="color: var(--text-muted);">Bagi alumni angkatan terkait mohon dapat memperbarui data alumni.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="agenda">
+                    <h3 class="text-xl font-bold tracking-tight mb-4 flex items-center gap-2">📅 Agenda Terdekat</h3>
+                    <div class="creative-card p-6 rounded-3xl space-y-4">
+                        <div class="flex gap-4 items-center group cursor-pointer">
+                            <div class="text-center bg-[var(--bg-main)] border border-[var(--border-color)] rounded-2xl p-3 min-w-[60px] group-hover:border-[var(--light-primary)] transition">
+                                <div class="text-[10px] text-[var(--light-primary)] font-bold uppercase">Okt</div>
+                                <div class="text-xl font-extrabold leading-none mt-1">15</div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold group-hover:text-[var(--light-primary)] transition">Workshop Personal Branding LinkedIn</h4>
+                                <p class="text-xs mt-1 flex items-center gap-1" style="color: var(--text-muted);">📍 Gedung HUB Prof. Masjaya / Zoom</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. TENTANG UPA PERKASA -->
+    <section id="about" class="py-16 px-6 max-w-7xl mx-auto reveal">
+        <div class="creative-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
+            <div class="absolute -right-24 -bottom-24 w-72 h-72 rounded-full blur-3xl pointer-events-none" style="background-color: var(--card-glow);"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="text-accent-theme text-xs font-bold uppercase tracking-wider">Mengenal UPA Perkasa</span>
+                    <h2 class="text-3xl font-extrabold">Unit Pengembangan Karir & Kewirausahaan</h2>
+                    <p class="text-sm leading-relaxed" style="color: var(--text-muted);">
+                        UPA Perkasa Universitas Mulawarman berdiri sejak tahun 2016 sebagai jembatan strategis antara dunia akademik dengan dunia usaha dan industri (DUDI). Kami berkomitmen memfasilitasi pengembangan kompetensi, jiwa kewirausahaan, serta penyerapan alumni di dunia kerja.
+                    </p>
+                    <div class="pt-2">
+                        <button onclick="openVideoModal()" class="text-[var(--light-primary)] font-bold text-sm hover:underline flex items-center gap-2 group">
+                            <span class="w-7 h-7 rounded-full bg-[var(--primary)]/20 flex items-center justify-center group-hover:scale-110 transition">▶</span> Tonton Video Selengkapnya
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full aspect-video rounded-2xl overflow-hidden relative group cursor-pointer border border-[var(--border-color)] shadow-2xl bg-black flex items-center justify-center" onclick="openVideoModal()">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop" alt="Video Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition">
+                            <div class="w-14 h-14 rounded-full bg-primary-theme text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition duration-300">
+                                <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-[var(--border-color)] py-10 px-6 mt-10 text-center text-sm" style="color: var(--text-muted);">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>PERKASA.EDU &copy; 2026. UPA Perkasa Universitas Mulawarman.</div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-[var(--text-main)] transition">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-[var(--text-main)] transition">Kontak Kami</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL POP-UP VIDEO -->
+    <div id="videoModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-[var(--bg-card)] rounded-3xl overflow-hidden shadow-2xl border border-[var(--border-color)]">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 z-10 text-white bg-black/50 hover:bg-black/80 w-10 h-10 rounded-full flex items-center justify-center transition">
+                ✕
+            </button>
+            <div class="aspect-video w-full bg-black flex items-center justify-center">
+                <iframe id="youtubeIframe" class="w-full h-full border-0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function toggleThemeMode() {
+            const htmlTag = document.documentElement;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+
+            if (htmlTag.getAttribute('data-theme') === 'dark') {
+                htmlTag.setAttribute('data-theme', 'light');
+                themeIcon.innerText = '☀️';
+                themeText.innerText = 'Light Mode';
+            } else {
+                htmlTag.setAttribute('data-theme', 'dark');
+                themeIcon.innerText = '🌙';
+                themeText.innerText = 'Dark Mode';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        const words = ["Karir Terbaikmu", "Masa Depan Cerah", "Jiwa Wirausaha"];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typingText').textContent += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2500);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typingText').textContent = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    setTimeout(typingEffect, 500);
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+
+        typingEffect();
+
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeIframe');
+            iframe.src = iframe.src; 
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('scroll', function() {
+            const scrollValue = window.scrollY;
+            const heroBg = document.getElementById('hero-parallax');
+            if (heroBg) heroBg.style.backgroundPositionY = (scrollValue * 0.4) + 'px';
+
+            const opan = document.getElementById('opan-container');
+            if (opan) opan.style.transform = `translateY(${scrollValue * 0.08}px)`;
+        });
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
